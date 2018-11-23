@@ -12,6 +12,7 @@ import java.time.temporal.TemporalField;
 import java.time.temporal.TemporalUnit;
 import java.util.Objects;
 
+// final修饰,无法被继承
 public final class LocalDateTimeCopy
         implements Temporal, TemporalAdjuster, ChronoLocalDateTime<LocalDate>, Serializable {
 
@@ -80,7 +81,25 @@ public final class LocalDateTimeCopy
         return new LocalDateTimeCopy(date, time);
     }
 
+    public static LocalDateTimeCopy of(int year, int month, int dayOfMonth, int hour, int minute, int second) {
+        LocalDate date = LocalDate.of(year, month, dayOfMonth);
+        LocalTime time = LocalTime.of(hour, minute, second);
+        return new LocalDateTimeCopy(date, time);
+    }
 
+    public static LocalDateTimeCopy of(int year, int month, int dayOfMonth, int hour, int minute, int second, int nanoOfSecond) {
+        LocalDate date = LocalDate.of(year, month, dayOfMonth);
+        LocalTime time = LocalTime.of(hour, minute, second, nanoOfSecond);
+        return new LocalDateTimeCopy(date, time);
+    }
+
+    public static LocalDateTimeCopy of(LocalDate date, LocalTime time) {
+        Objects.requireNonNull(date, "date");
+        Objects.requireNonNull(time, "time");
+        return new LocalDateTimeCopy(date, time);
+    }
+
+    // TODO 2018-11-23 16:45
 
     private static final long SECONDS_PER_DAY = 3600 * 24;
     private static final long NANOS_PER_SECONDS = 1000_000_000L;
