@@ -21,7 +21,7 @@ public class Data {
         changed = true;
     }
 
-    public void save() throws IOException {
+    public synchronized void save() throws IOException {
         if (!changed) {
             return;
         }
