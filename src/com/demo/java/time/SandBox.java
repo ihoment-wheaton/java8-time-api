@@ -12,7 +12,7 @@ import java.util.logging.Filter;
 public class SandBox {
 
     public static void main(String[] args) {
-        System.out.println("H7203011".hashCode());
+        System.out.println("cs@mingerlighting.com".hashCode());
         List<Long> list = new ArrayList<>();
         list.add(1545806098676L);
         list.add(1545808322417L);
